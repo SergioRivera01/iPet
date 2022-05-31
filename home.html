@@ -1,0 +1,117 @@
+<?php
+$conexion = mysqli_connect('localhost', 'root', '', 'ipet');
+?>
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="misEstilos.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>iPet</title>
+</head>
+
+<body>
+    <header>
+        <img src="Imagenes/logo.PNG" id="logo" alt="Logo iPet">
+    </header>
+
+    <div id="columnaIzq">
+
+        <?php
+
+        $sql = "SELECT * FROM perros";
+        $result = mysqli_query($conexion, $sql);
+
+
+        while ($mostrar = mysqli_fetch_array($result)) {
+        ?>
+
+            <div id="infoPerro">
+                <h2 class="TitulosDivs">Información Básica</h2>
+                <img src="Imagenes/Imagen1.png" alt="imagenPerro" id="fotoAnimal">
+                <p> Nombre: <?php echo $mostrar['Nombre'] ?></p>
+                <p> Raza: <?php echo $mostrar['Raza'] ?></p>
+                <p> Edad: <?php echo $mostrar['Edad'] ?> año/s </p>
+                <p> Peso: <?php echo $mostrar['Peso'] ?> Kg </p>
+            </div>
+
+        <?php
+        }
+        ?>
+
+        <?php
+
+        $sql = "SELECT * FROM dueños";
+        $result = mysqli_query($conexion, $sql);
+
+
+        while ($mostrar = mysqli_fetch_array($result)) {
+        ?>
+
+            <div id="infoDueños">
+                <h2 class="TitulosDivs">Información Dueños</h2>
+                <p> Nombre: <?php echo $mostrar['Nombre'], " ", $mostrar['Apellidos'] ?> </p>
+                <p> Teléfono: <?php echo $mostrar['Telefono'] ?></p>
+                <p> Dirección: <?php echo $mostrar['Direccion'] ?></p>
+            </div>
+
+        <?php
+        }
+        ?>
+
+
+        <?php
+        $sql = "SELECT * FROM perros";
+        $result = mysqli_query($conexion, $sql);
+
+        while ($mostrar = mysqli_fetch_array($result)) {
+        ?>
+            <div id="infoDetallada">
+                <h2 class="TitulosDivs">Información Detallada</h2>
+                <p> Vacunas: <?php echo $mostrar['Vacunas'] ?></p>
+                <p> Actividad necesaria:
+                    <?php if ($mostrar['Edad']  >= 2) {
+                        echo "Minimo 40 minutos diarios" ?>
+                    <?php
+                    } ?>
+
+                    <?php if ($mostrar['Edad']  < 2) {
+                        echo "Minimo 20 minutos diarias" ?>
+                    <?php
+                    } ?>
+                </p>
+                <p> Comida:
+                    <?php if ($mostrar['Peso']  >= 20) {
+                        echo "300g diarios" ?>
+                    <?php
+                    } ?>
+
+                    <?php if ($mostrar['Peso']  < 20) {
+                        echo "200g diarios" ?>
+                    <?php
+                    } ?></p>
+                <p> Cuidados especiales: <?php echo $mostrar['Cuidados'] ?> </p>
+            </div>
+    </div>
+
+<?php
+        }
+?>
+
+
+</div>
+
+<div id="calendario">
+    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23F6BF26&ctz=Europe%2FMadrid&showCalendars=0&showTabs=1&showPrint=0&showDate=1&showTz=0&src=cjdhMDIwbWZvbmQwYm0yNmUxbDgycnQzcTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%234285F4" style="border-width:0" width="600" height="400" frameborder="0" scrolling="no"></iframe><br>
+    <a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjNraHR0ODg4MDhlbWg1aHE5YmNwZDc2cW4gcjdhMDIwbWZvbmQwYm0yNmUxbDgycnQzcTBAZw&amp;tmsrc=r7a020mfond0bm26e1l82rt3q0%40group.calendar.google.com">Añadir Evento</a>
+</div>
+
+
+</body>
+
+</html>
