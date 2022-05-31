@@ -1,0 +1,56 @@
+#calendario {
+    width: 610px;
+    height: 450px;
+    float: right;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#columnaIzq {
+    width: 30%;
+    margin: 5px;
+    padding: 10px;
+    float: left;
+}
+
+#fotoAnimal {
+    width: 150px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#btnQR {
+    float: right;
+    margin-top: 90px;
+    margin-right: 20px;
+}
+
+#codigoQr {
+    width: 100px;
+    float: right;
+    margin-top: 30px;
+    margin: 20px;
+}
+
+
+
+.TitulosDivs {
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgb(0, 0, 136);
+}
+
+header {
+    background-color: #7388F8;
+}
+
+p {
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+#logo {
+    width: 10em;
+}
